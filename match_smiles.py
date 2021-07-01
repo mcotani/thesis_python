@@ -2,9 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sat Nov 21 14:48:30 2020
-
 @author: RitikaRamprasad
-@editor: MC Otani
 """
 
 

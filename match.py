@@ -159,10 +159,11 @@ if __name__ == '__main__':
     #S = [7.175, 14.435, 90] # this is from rubrense
     #S = [11.34, 15.88, 87.68] # this is from NPB
     #S = [9, 19.580, 89.86] # this is from 4CZIPN (002)
-    S = [19.313, 12.6864, 90] # this is from TPBi
+    # S = [19.313, 12.6864, 90] # this is from TPBi
+    S = [9.2008, 19.124, 90] # this is from BDP
     
     #S = [14.435, 27.908, 90] #for testing
-    df = pd.read_csv('latdatashort.csv', sep=";;;", engine="python")
+    df = pd.read_csv('latdataUpdate.csv', sep=";;;", engine="python")
     allparams = df.values[:, 1:8]
     result = pd.Series([cal_m_params(S, params) for params in allparams], index=df.index)
 
