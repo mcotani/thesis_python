@@ -163,20 +163,20 @@ if __name__ == '__main__':
     S = [9.2008, 19.124, 90] # this is from BDP
     
     #S = [14.435, 27.908, 90] #for testing
-    df = pd.read_csv('latdataUpdate.csv', sep=";;;", engine="python")
+    df = pd.read_csv('/Users/mariaclaraotani/Google Drive/My Drive/THESIS/PYTHON_SCRIPT/thesis_python/latdata.csv', sep=";;;", engine="python")
     allparams = df.values[:, 1:8]
     result = pd.Series([cal_m_params(S, params) for params in allparams], index=df.index)
 
     results = pd.DataFrame(result.values.tolist(), index = result.index, columns = ['m', 'plane', 'low energy plane', 'match?'])
     df = pd.merge(df, results, right_index=True, left_index=True)
+    df.to_csv('match_results_BDP.csv')
+    # df_id = df.iloc[:,2]
+    # csd_mol_reader = MoleculeReader('CSD')
     
-    df_id = df.iloc[:,2]
-    csd_mol_reader = MoleculeReader('CSD')
-
-    mol = pd.Series([csd_mol_reader.molecule(df_id[i]) for i in range(len(df))])
-    mol_smile = pd.Series([mol[i].smiles for i in range(len(mol))])
-    mol_smiles = pd.DataFrame(mol_smile.values.tolist(), index = mol_smile.index, columns = ['Smile ID'])
-    df = pd.merge(df, mol_smiles, right_index=True, left_index=True)
+    # mol = pd.Series([csd_mol_reader.molecule(df_id[i]) for i in range(len(df))])
+    # mol_smile = pd.Series([mol[i].smiles for i in range(len(mol))])
+    # mol_smiles = pd.DataFrame(mol_smile.values.tolist(), index = mol_smile.index, columns = ['Smile ID'])
+    # df = pd.merge(df, mol_smiles, right_index=True, left_index=True)
     
-    print('matching against', S)
-    df.to_excel('match_results.xlsx')
+    # print('matching against', S)
+    # df.to_excel('match_results.xlsx')
